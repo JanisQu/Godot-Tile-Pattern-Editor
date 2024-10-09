@@ -78,16 +78,15 @@ func update_pattern_highlight() -> void:
   for i in range(-current_map_size, current_map_size + 1):
     for j in range(-current_map_size, current_map_size + 1):
       var cell_pos = Vector2i(j,i)
-      
       highlight_map_layer.erase_cell(cell_pos)
       if current_pattern.has(cell_pos):
         highlight_map_layer.set_cell(cell_pos, 0, Vector2i(3, 0), 0)
         
 func remove_out_of_bound_cells() -> void:
-  # to prevent runtime array modification errors
   var current_pattern_copy := current_pattern.duplicate()
   for i in range(current_pattern.size() -1, -1, -1 ):
     if not is_cell_in_bounds(current_pattern[i], current_map_size):
+      highlight_map_layer.erase_cell(current_pattern[i])
       current_pattern_copy.remove_at(i)
   current_pattern = current_pattern_copy
     
@@ -101,7 +100,6 @@ func place_cell(cell_pos : Vector2i) -> void:
 func earase_cell(cell_pos : Vector2i) -> void:
   if is_cell_in_bounds(cell_pos, current_map_size):
     if current_pattern.has(cell_pos):
-      #var cell_coords = tile_map_layer.get_cell_atlas_coords(cell_pos)
       highlight_map_layer.erase_cell(cell_pos)
       current_pattern.erase(cell_pos)
       pattern_resource.pattern = current_pattern
@@ -139,8 +137,8 @@ func _on_load_pattern_button_pressed() -> void:
   
 func _on_load_dialog_file_selected(path: String) -> void:
   var res = ResourceLoader.load(path)
-  pattern_resource = res
-  current_pattern = pattern_resource.pattern
+  pattern_resource = res.duplicate()
+  current_pattern = pattern_resource.pattern.duplicate()
   remove_out_of_bound_cells()
   update_pattern_highlight()
 
@@ -163,11 +161,8 @@ func _on_set_size_button_pressed() -> void:
 
 
 func _on_set_direction_pressed(dir: int) -> void:
-  var direction : TilePatternResource.Direction = TilePatternResource.Direction.keys()[dir]
+  var direction : TilePatternResource.Direction = TilePatternResource.Direction.values()[dir]
   pattern_resource.set_and_update_direction(direction)
   current_pattern = pattern_resource.pattern
+  %DirectionLabel.text = TilePatternResource.Direction.keys()[dir]
   update_pattern_highlight()
-
-
-func _on_set_direction_right_pressed() -> void:
-  pass # Replace with function body.

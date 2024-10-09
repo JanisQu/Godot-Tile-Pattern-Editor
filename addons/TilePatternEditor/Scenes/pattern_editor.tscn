@@ -1,7 +1,11 @@
-[gd_scene load_steps=7 format=4 uid="uid://cgwmt70llcga1"]
+[gd_scene load_steps=11 format=4 uid="uid://cgwmt70llcga1"]
 
 [ext_resource type="Script" path="res://addons/TilePatternEditor/Scenes/pattern_editor.gd" id="1_3m2rk"]
 [ext_resource type="Texture2D" uid="uid://d05mbil1qrbi0" path="res://addons/TilePatternEditor/Assets/PluginAssets.png" id="1_x3tuu"]
+[ext_resource type="Texture2D" uid="uid://cfrob5p36xlxh" path="res://addons/TilePatternEditor/Assets/arrowRight.png" id="2_iwhx2"]
+[ext_resource type="Texture2D" uid="uid://wubn5w8jilek" path="res://addons/TilePatternEditor/Assets/arrowDown.png" id="3_ej2yv"]
+[ext_resource type="Texture2D" uid="uid://dfyr8hirpweet" path="res://addons/TilePatternEditor/Assets/arrowLeft.png" id="4_wthrg"]
+[ext_resource type="Texture2D" uid="uid://buit5ly2ytvnj" path="res://addons/TilePatternEditor/Assets/arrowUp.png" id="5_bmr7p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0dslp"]
 bg_color = Color(0.23, 0.23, 0.23, 1)
@@ -73,7 +77,7 @@ text = "Set Size"
 [node name="SpinBox" type="SpinBox" parent="VFlowContainer/Panel/HFlowContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-min_value = 1.0
+min_value = 2.0
 max_value = 10.0
 value = 3.0
 alignment = 1
@@ -99,6 +103,7 @@ size_flags_vertical = 0
 text = "Clear"
 
 [node name="MenuBar" type="MenuBar" parent="VFlowContainer/Panel/HFlowContainer"]
+visible = false
 custom_minimum_size = Vector2(180, 64)
 layout_mode = 2
 
@@ -145,6 +150,72 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_0dslp")
 
+[node name="MarginContainer" type="MarginContainer" parent="VFlowContainer/Panel2"]
+layout_mode = 2
+offset_right = 142.0
+offset_bottom = 149.0
+theme_override_constants/margin_left = 4
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VFlowContainer/Panel2/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VFlowContainer/Panel2/MarginContainer/VBoxContainer3"]
+layout_mode = 2
+text = "Set Direction"
+vertical_alignment = 1
+
+[node name="DirectionButtons" type="HBoxContainer" parent="VFlowContainer/Panel2/MarginContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+
+[node name="VBoxLeft" type="VBoxContainer" parent="VFlowContainer/Panel2/MarginContainer/VBoxContainer3/DirectionButtons"]
+layout_mode = 2
+alignment = 1
+
+[node name="Left" type="Button" parent="VFlowContainer/Panel2/MarginContainer/VBoxContainer3/DirectionButtons/VBoxLeft"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 8
+icon = ExtResource("4_wthrg")
+icon_alignment = 1
+expand_icon = true
+
+[node name="VBoxMiddle" type="VBoxContainer" parent="VFlowContainer/Panel2/MarginContainer/VBoxContainer3/DirectionButtons"]
+layout_mode = 2
+
+[node name="Up" type="Button" parent="VFlowContainer/Panel2/MarginContainer/VBoxContainer3/DirectionButtons/VBoxMiddle"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+icon = ExtResource("5_bmr7p")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Down" type="Button" parent="VFlowContainer/Panel2/MarginContainer/VBoxContainer3/DirectionButtons/VBoxMiddle"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+icon = ExtResource("3_ej2yv")
+icon_alignment = 1
+expand_icon = true
+
+[node name="VBoxRight" type="VBoxContainer" parent="VFlowContainer/Panel2/MarginContainer/VBoxContainer3/DirectionButtons"]
+layout_mode = 2
+alignment = 1
+
+[node name="Right" type="Button" parent="VFlowContainer/Panel2/MarginContainer/VBoxContainer3/DirectionButtons/VBoxRight"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+icon = ExtResource("2_iwhx2")
+expand_icon = true
+
+[node name="Label2" type="Label" parent="VFlowContainer/Panel2/MarginContainer/VBoxContainer3"]
+layout_mode = 2
+text = "Curren Direction:"
+
+[node name="DirectionLabel" type="Label" parent="VFlowContainer/Panel2/MarginContainer/VBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Right"
+
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 unique_name_in_owner = true
 position = Vector2(384, 328)
@@ -156,7 +227,6 @@ tile_set = SubResource("TileSet_faps1")
 unique_name_in_owner = true
 position = Vector2(384, 328)
 scale = Vector2(2.33333, 2.33333)
-tile_map_data = PackedByteArray("AAAAAAEAAAABAAAAAAABAAAAAAABAAAAAAABAAEAAAAAAAAAAAD+/wAAAAAAAAAAAAD+/wEAAAABAAAAAAD//wAAAAABAAAAAAD//wEAAAAAAAAAAAD9//3/AAAAAAAAAAD9//7/AAABAAAAAAD9////AAAAAAAAAAD9/wAAAAABAAAAAAD9/wEAAAAAAAAAAAD9/wIAAAABAAAAAAD+//3/AAABAAAAAAD///3/AAAAAAAAAAD+//7/AAAAAAAAAAD+////AAABAAAAAAD///7/AAABAAAAAAD/////AAAAAAAAAAD+/wIAAAAAAAAAAAD//wIAAAABAAAAAAAAAP3/AAABAAAAAAABAP3/AAAAAAAAAAAAAP7/AAAAAAAAAAABAP7/AAABAAAAAAABAP//AAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAAABAAAAAAACAP3/AAABAAAAAAADAP3/AAAAAAAAAAACAP7/AAAAAAAAAAACAP//AAABAAAAAAADAP7/AAABAAAAAAADAP//AAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAABAAAAAAADAAAAAAABAAAAAAADAAEAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAABAAAAAAD9/wMAAAAAAAAAAAD+/wMAAAABAAAAAAD//wMAAAAAAAAAAAAAAAMAAAABAAAAAAABAAMAAAAAAAAAAAACAAMAAAABAAAAAAADAAMAAAAAAAAAAAAAAP//AAABAAAAAAA=")
 tile_set = SubResource("TileSet_faps1")
 
 [node name="HoverLayer" type="TileMapLayer" parent="."]
@@ -183,5 +253,9 @@ file_mode = 0
 [connection signal="pressed" from="VFlowContainer/Panel/HFlowContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VFlowContainer/Panel/HFlowContainer/ClearButton" to="." method="_on_clear_button_pressed"]
 [connection signal="id_pressed" from="VFlowContainer/Panel/HFlowContainer/MenuBar/SetDirection" to="." method="_on_set_direction_id_pressed"]
+[connection signal="pressed" from="VFlowContainer/Panel2/MarginContainer/VBoxContainer3/DirectionButtons/VBoxLeft/Left" to="." method="_on_set_direction_pressed" binds= [2]]
+[connection signal="pressed" from="VFlowContainer/Panel2/MarginContainer/VBoxContainer3/DirectionButtons/VBoxMiddle/Up" to="." method="_on_set_direction_pressed" binds= [3]]
+[connection signal="pressed" from="VFlowContainer/Panel2/MarginContainer/VBoxContainer3/DirectionButtons/VBoxMiddle/Down" to="." method="_on_set_direction_pressed" binds= [1]]
+[connection signal="pressed" from="VFlowContainer/Panel2/MarginContainer/VBoxContainer3/DirectionButtons/VBoxRight/Right" to="." method="_on_set_direction_pressed" binds= [0]]
 [connection signal="file_selected" from="SaveDialog" to="." method="_on_save_dialog_file_selected"]
 [connection signal="file_selected" from="LoadDialog" to="." method="_on_load_dialog_file_selected"]
