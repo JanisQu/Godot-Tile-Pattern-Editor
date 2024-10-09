@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kn58hwmfs1rc"
-path="res://.godot/imported/TilePatternEdior.png-04dac67377fd3287f63087e5702a05ee.ctex"
+uid="uid://p2qmb1hhbrmh"
+path="res://.godot/imported/TilePatternEditor.png-d0bbbfae108ece2df15a2439c903757e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TilePatternEdior.png"
-dest_files=["res://.godot/imported/TilePatternEdior.png-04dac67377fd3287f63087e5702a05ee.ctex"]
+source_file="res://TilePatternEditor.png"
+dest_files=["res://.godot/imported/TilePatternEditor.png-d0bbbfae108ece2df15a2439c903757e.ctex"]
 
 [params]
 
