@@ -5,6 +5,7 @@ This addon adds a simple Tile Pattern Editor to the Godot Editor, enabling the c
 Store patterns as Vector2i arrays in a custom TilePatternResource.
 TilePatternResource supports rotation and directional handling procrammatically or through the edior.
 
+![Editor](TilePatternEditor.png)
 
 ## Installation
 
