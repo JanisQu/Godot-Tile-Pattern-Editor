@@ -1,8 +1,7 @@
 @tool
 extends Control
 
-
-@onready var highlight_layer: TileMapLayer = %HoverLayer
+@onready var hover_layer: TileMapLayer = %HoverLayer
 @onready var tile_map_layer: TileMapLayer = %TileMapLayer
 @onready var highlight_map_layer: TileMapLayer = %HighlightMapLayer
 @onready var save_dialog: FileDialog = $SaveDialog
@@ -14,7 +13,7 @@ var current_map_size := 3
 var pattern_resource : TilePatternResource
 
 var is_drawing := false
-var is_earasing := false
+var is_erasing := false
 
 func _ready() -> void:
   generate_tilemap(current_map_size)
@@ -23,43 +22,44 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-  highlight_layer.erase_cell(last_cell_pos)
-  var cell_pos = highlight_layer.local_to_map(highlight_layer.get_local_mouse_position())
+  hover_layer.erase_cell(last_cell_pos)
+  var cell_pos = hover_layer.local_to_map(hover_layer.get_local_mouse_position())
   if is_cell_in_bounds(cell_pos, current_map_size):
-    highlight_layer.set_cell(cell_pos, 0, Vector2i(2, 0), 0)
+    hover_layer.set_cell(cell_pos, 0, Vector2i(2, 0), 0)
   last_cell_pos = cell_pos
 
-
 func _input(event: InputEvent) -> void:
-  if not visible : 
+  if not visible:
     return
- 
+
   var mouse_pos = tile_map_layer.get_local_mouse_position()
   var cell_pos = tile_map_layer.local_to_map(mouse_pos)
   var in_bounds = is_cell_in_bounds(cell_pos, current_map_size)
-  
+
+  # Placing the cell
   if event is InputEventMouseButton:
     if event.button_index == MOUSE_BUTTON_LEFT:
       if event.pressed and in_bounds:
         is_drawing = true
         place_cell(cell_pos)
       else:
-        is_drawing = false 
-        
+        is_drawing = false
+
+    # Erasing the cell
     if event.button_index == MOUSE_BUTTON_RIGHT:
       if event.pressed and in_bounds:
-        is_earasing = true
-        earase_cell(cell_pos)
+        is_erasing = true
+        erase_cell(cell_pos)
       else:
-        is_earasing = false 
+        is_erasing = false
 
-    # Handle continuous drawing while the mouse is moving and the button is pressed
+  # Handle continuous drawing while the mouse is moving and the button is pressed
   if event is InputEventMouseMotion and is_drawing:
-    place_cell(cell_pos)   
+    place_cell(cell_pos)
 
-  if event is InputEventMouseMotion and is_earasing and not is_drawing:
-    earase_cell(cell_pos)
-      
+  if event is InputEventMouseMotion and is_erasing and not is_drawing:
+    erase_cell(cell_pos)
+
 
 func generate_tilemap(size : int):
   tile_map_layer.clear()
@@ -81,7 +81,7 @@ func update_pattern_highlight() -> void:
       highlight_map_layer.erase_cell(cell_pos)
       if current_pattern.has(cell_pos):
         highlight_map_layer.set_cell(cell_pos, 0, Vector2i(3, 0), 0)
-        
+
 func remove_out_of_bound_cells() -> void:
   var current_pattern_copy := current_pattern.duplicate()
   for i in range(current_pattern.size() -1, -1, -1 ):
@@ -89,15 +89,15 @@ func remove_out_of_bound_cells() -> void:
       highlight_map_layer.erase_cell(current_pattern[i])
       current_pattern_copy.remove_at(i)
   current_pattern = current_pattern_copy
-    
+
 func place_cell(cell_pos : Vector2i) -> void:
   if is_cell_in_bounds(cell_pos, current_map_size):
     if not current_pattern.has(cell_pos):
       current_pattern.append(cell_pos)
       highlight_map_layer.set_cell(cell_pos, 0, Vector2i(3, 0), 0)
       pattern_resource.pattern = current_pattern
-      
-func earase_cell(cell_pos : Vector2i) -> void:
+
+func erase_cell(cell_pos : Vector2i) -> void:
   if is_cell_in_bounds(cell_pos, current_map_size):
     if current_pattern.has(cell_pos):
       highlight_map_layer.erase_cell(cell_pos)
@@ -116,25 +116,25 @@ func _on_clear_button_pressed() -> void:
 func _on_change_size_button_pressed(new_size : int) -> void:
   generate_tilemap(new_size)
   current_map_size = new_size
-  
-  var scale_factor = 1.0 / float(new_size) * 7.0  # Adjust the constant factor as needed
+
+  var scale_factor = 1.0 / float(new_size) * 7.0
   tile_map_layer.scale = Vector2(scale_factor, scale_factor)
-  highlight_layer.scale = Vector2(scale_factor, scale_factor)
+  hover_layer.scale = Vector2(scale_factor, scale_factor)
   remove_out_of_bound_cells()
   update_pattern_highlight()
 
 func _on_save_pattern_button_pressed() -> void:
   save_dialog.show()
-  
+
 func _on_save_dialog_file_selected(path: String) -> void:
   if not path.ends_with(".res"):
     path += ".res"
   ResourceSaver.save(pattern_resource, path, ResourceSaver.FLAG_NONE)
   save_dialog.hide()
-  
+
 func _on_load_pattern_button_pressed() -> void:
   load_dialog.show()
-  
+
 func _on_load_dialog_file_selected(path: String) -> void:
   var res = ResourceLoader.load(path)
   pattern_resource = res.duplicate()
@@ -145,10 +145,10 @@ func _on_load_dialog_file_selected(path: String) -> void:
 func set_tile_map_size(new_size : int) -> void:
   generate_tilemap(new_size)
   current_map_size = new_size
-  
+
   var scale_factor = 1.0 / float(new_size) * 7.0  # Adjust the constant factor as needed
   tile_map_layer.scale = Vector2(scale_factor, scale_factor)
-  highlight_layer.scale = Vector2(scale_factor, scale_factor)
+  hover_layer.scale = Vector2(scale_factor, scale_factor)
   highlight_map_layer.scale = Vector2(scale_factor, scale_factor)
   remove_out_of_bound_cells()
   update_pattern_highlight()
@@ -157,7 +157,7 @@ func set_tile_map_size(new_size : int) -> void:
 func _on_set_size_button_pressed() -> void:
   var new_size : int = int(%SpinBox.value)
   set_tile_map_size(new_size)
-  
+
 
 
 func _on_set_direction_pressed(dir: int) -> void:

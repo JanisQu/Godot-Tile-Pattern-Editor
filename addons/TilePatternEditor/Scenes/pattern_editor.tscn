@@ -233,6 +233,7 @@ tile_set = SubResource("TileSet_faps1")
 unique_name_in_owner = true
 position = Vector2(384, 328)
 scale = Vector2(2.33333, 2.33333)
+tile_map_data = PackedByteArray("AAD/////AAACAAAAAAA=")
 tile_set = SubResource("TileSet_faps1")
 
 [node name="SaveDialog" type="FileDialog" parent="."]
