@@ -8,9 +8,9 @@ var pattern_edior : Control = load(addon_path.path_join("Scenes/pattern_editor.t
 
 
 func _enter_tree() -> void:
-  
+
   add_control_to_bottom_panel(pattern_edior, "TilePattern")
-  
+
 
 
 func _exit_tree() -> void:

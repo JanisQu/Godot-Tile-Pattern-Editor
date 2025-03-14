@@ -29,7 +29,7 @@ A custom resource used to store and manipulate tile patterns. Patterns are store
 ### Properties:
 * **pattern**: Array[Vector2i]: The current array of tile positions.
 * **current_direction**: Direction: The direction the pattern is currently facing (Right, Up, Left, Down).
-  
+
 
 ### Methods:
 * **set_direction_preview(target_direction: Direction) -> Array[Vector2i]**: Returns what the pattern would look like if rotated to the target_direction, without modifying the current state.
@@ -37,5 +37,5 @@ A custom resource used to store and manipulate tile patterns. Patterns are store
 * **rotate_by_90(clockwise: bool = true) -> Array[Vector2i]**: Rotates the pattern by 90 degrees clockwise or counterclockwise.
 * **get_current_pattern_state() -> Array[Vector2i]:** Returns the current pattern rotated to its current direction.
 
-## License 
+## License
 This project is licensed under the MIT License.
