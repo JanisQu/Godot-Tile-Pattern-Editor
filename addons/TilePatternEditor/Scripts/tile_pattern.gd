@@ -2,8 +2,8 @@ class_name TilePatternResource
 extends Resource
 ## Stores the cell information and rotation of the pattern
 ##
-## This class allows to rotate the pattern 90 degrees. Either by giving a preview of the rotated
-## pattenr or setting it directly
+## This class allows to rotate the pattern by 90 degree steps. Either by giving a preview of the rotated
+## pattenrn or setting it directly
 ##
 
 enum Direction {
@@ -12,7 +12,6 @@ enum Direction {
     Left = 2,
     Up = 3,
 }
-
 
 @export var pattern: Array[Vector2i]
 @export var current_direction: Direction = Direction.Right
@@ -29,11 +28,9 @@ func set_direction_preview(target_direction: Direction) -> Array[Vector2i]:
 
 func set_and_update_direction(target_direction: Direction) -> void:
     var rotated_pattern = set_direction_preview(target_direction)
-
     pattern = rotated_pattern
     current_direction = target_direction
 
-    print_debug("Pattern after update: ", pattern)
 
 func rotate_by_90(clockwise: bool = true) -> Array[Vector2i]:
     var rotated_pattern: Array[Vector2i] = pattern.duplicate()
