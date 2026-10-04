@@ -1,0 +1,17 @@
+[gd_resource type="TileSet" format=3 uid="uid://b7qm1xfyxhpd2"]
+
+[ext_resource type="Texture2D" uid="uid://d2yl0lgefaauq" path="res://addons/TilePatternEditor/Assets/TilePatternEditorPluginAsset.png" id="1_002jr"]
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_itri6"]
+tile_data = PackedInt32Array(0, 0, 0, 65536, 65536, 0, 1, 65536, 0, 65537, 0, 0)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_56uiq"]
+texture = ExtResource("1_002jr")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+
+[resource]
+sources/0 = SubResource("TileSetAtlasSource_56uiq")
+pattern_0 = SubResource("TileMapPattern_itri6")

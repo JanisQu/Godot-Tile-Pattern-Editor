@@ -1,38 +1,19 @@
-[gd_scene load_steps=11 format=4 uid="uid://cgwmt70llcga1"]
+[gd_scene format=4 uid="uid://cgwmt70llcga1"]
 
 [ext_resource type="Script" uid="uid://5vkql6mqwglr" path="res://addons/TilePatternEditor/Scenes/pattern_editor.gd" id="1_3m2rk"]
-[ext_resource type="Texture2D" uid="uid://d05mbil1qrbi0" path="res://addons/TilePatternEditor/Assets/PluginAssets.png" id="1_x3tuu"]
 [ext_resource type="Texture2D" uid="uid://cfrob5p36xlxh" path="res://addons/TilePatternEditor/Assets/arrowRight.png" id="2_iwhx2"]
 [ext_resource type="Texture2D" uid="uid://wubn5w8jilek" path="res://addons/TilePatternEditor/Assets/arrowDown.png" id="3_ej2yv"]
 [ext_resource type="Texture2D" uid="uid://dfyr8hirpweet" path="res://addons/TilePatternEditor/Assets/arrowLeft.png" id="4_wthrg"]
 [ext_resource type="Texture2D" uid="uid://buit5ly2ytvnj" path="res://addons/TilePatternEditor/Assets/arrowUp.png" id="5_bmr7p"]
+[ext_resource type="TileSet" uid="uid://b7qm1xfyxhpd2" path="res://addons/TilePatternEditor/Resources/tile_set.tres" id="6_6rdq5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0dslp"]
 bg_color = Color(0.23, 0.23, 0.23, 1)
 
-[sub_resource type="TileMapPattern" id="TileMapPattern_itri6"]
-tile_data = PackedInt32Array(0, 0, 0, 65536, 65536, 0, 1, 65536, 0, 65537, 0, 0)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_56uiq"]
+bg_color = Color(0.16778648, 0.16778648, 0.16778648, 1)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lyj7l"]
-texture = ExtResource("1_x3tuu")
-texture_region_size = Vector2i(32, 32)
-0:0/next_alternative_id = 4
-0:0/0 = 0
-0:0/1 = 1
-0:0/1/modulate = Color(0, 0.2, 2, 1)
-1:0/next_alternative_id = 2
-1:0/0 = 0
-1:0/1 = 1
-1:0/1/modulate = Color(0.28, 0.724, 1, 1)
-2:0/0 = 0
-3:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_faps1"]
-tile_size = Vector2i(32, 32)
-sources/0 = SubResource("TileSetAtlasSource_lyj7l")
-pattern_0 = SubResource("TileMapPattern_itri6")
-
-[node name="PatternEditor" type="Control"]
+[node name="PatternEditor" type="Control" unique_id=400719672]
 texture_filter = 1
 clip_contents = true
 layout_mode = 3
@@ -46,7 +27,7 @@ size_flags_vertical = 3
 script = ExtResource("1_3m2rk")
 metadata/_edit_horizontal_guides_ = [-92.0]
 
-[node name="VFlowContainer" type="VBoxContainer" parent="."]
+[node name="VFlowContainer" type="VBoxContainer" parent="." unique_id=1832810880]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -55,11 +36,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="OptionsPanel" type="Panel" parent="VFlowContainer"]
+[node name="OptionsPanel" type="Panel" parent="VFlowContainer" unique_id=960012007]
 custom_minimum_size = Vector2(0, 88)
 layout_mode = 2
 
-[node name="HFlowContainer" type="HFlowContainer" parent="VFlowContainer/OptionsPanel"]
+[node name="HFlowContainer" type="HFlowContainer" parent="VFlowContainer/OptionsPanel" unique_id=836365801]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -67,14 +48,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VFlowContainer/OptionsPanel/HFlowContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VFlowContainer/OptionsPanel/HFlowContainer" unique_id=837397374]
 layout_mode = 2
 
-[node name="SetSizeButton" type="Button" parent="VFlowContainer/OptionsPanel/HFlowContainer/VBoxContainer"]
+[node name="SetSizeButton" type="Button" parent="VFlowContainer/OptionsPanel/HFlowContainer/VBoxContainer" unique_id=1386321497]
 layout_mode = 2
 text = "Set Size"
 
-[node name="SpinBox" type="SpinBox" parent="VFlowContainer/OptionsPanel/HFlowContainer/VBoxContainer"]
+[node name="SpinBox" type="SpinBox" parent="VFlowContainer/OptionsPanel/HFlowContainer/VBoxContainer" unique_id=97492606]
 unique_name_in_owner = true
 layout_mode = 2
 min_value = 1.0
@@ -82,33 +63,33 @@ max_value = 20.0
 value = 3.0
 alignment = 1
 
-[node name="LoadPatternButton" type="Button" parent="VFlowContainer/OptionsPanel/HFlowContainer"]
+[node name="LoadPatternButton" type="Button" parent="VFlowContainer/OptionsPanel/HFlowContainer" unique_id=177307378]
 layout_mode = 2
 size_flags_vertical = 0
 text = "Load Pattern"
 
-[node name="SavePatternButton" type="Button" parent="VFlowContainer/OptionsPanel/HFlowContainer"]
+[node name="SavePatternButton" type="Button" parent="VFlowContainer/OptionsPanel/HFlowContainer" unique_id=809750744]
 layout_mode = 2
 size_flags_vertical = 0
 text = "Save Pattern"
 
-[node name="Button" type="Button" parent="VFlowContainer/OptionsPanel/HFlowContainer"]
+[node name="Button" type="Button" parent="VFlowContainer/OptionsPanel/HFlowContainer" unique_id=1237287671]
 layout_mode = 2
 size_flags_vertical = 0
 text = "Rotate"
 
-[node name="ClearButton" type="Button" parent="VFlowContainer/OptionsPanel/HFlowContainer"]
+[node name="ClearButton" type="Button" parent="VFlowContainer/OptionsPanel/HFlowContainer" unique_id=1194204857]
 layout_mode = 2
 size_flags_vertical = 0
 text = "Clear"
 
-[node name="DrawingPanel" type="Panel" parent="VFlowContainer"]
+[node name="DrawingPanel" type="Panel" parent="VFlowContainer" unique_id=263561319]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_0dslp")
 
-[node name="VboxContainer" type="HBoxContainer" parent="VFlowContainer/DrawingPanel"]
+[node name="VboxContainer" type="HBoxContainer" parent="VFlowContainer/DrawingPanel" unique_id=1071577389]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -116,41 +97,43 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="PanelContainer" parent="VFlowContainer/DrawingPanel/VboxContainer"]
+[node name="Panel" type="PanelContainer" parent="VFlowContainer/DrawingPanel/VboxContainer" unique_id=1784320004]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_56uiq")
 
-[node name="DirectionContainer" type="MarginContainer" parent="VFlowContainer/DrawingPanel/VboxContainer/Panel"]
+[node name="DirectionContainer" type="MarginContainer" parent="VFlowContainer/DrawingPanel/VboxContainer/Panel" unique_id=1899284490]
 clip_contents = true
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_right = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VFlowContainer/DrawingPanel/VboxContainer/Panel/DirectionContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VFlowContainer/DrawingPanel/VboxContainer/Panel/DirectionContainer" unique_id=2023242907]
 layout_mode = 2
 theme_override_constants/separation = 24
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="VFlowContainer/DrawingPanel/VboxContainer/Panel/DirectionContainer/VBoxContainer"]
+[node name="VBoxContainer3" type="VBoxContainer" parent="VFlowContainer/DrawingPanel/VboxContainer/Panel/DirectionContainer/VBoxContainer" unique_id=126814457]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VFlowContainer/DrawingPanel/VboxContainer/Panel/DirectionContainer/VBoxContainer/VBoxContainer3"]
+[node name="Label" type="Label" parent="VFlowContainer/DrawingPanel/VboxContainer/Panel/DirectionContainer/VBoxContainer/VBoxContainer3" unique_id=1873677672]
 layout_mode = 2
 tooltip_text = "The Direction indicates the patterns current orientation. 
 The direction can also be changed via code on a saved pattern. 
 Changing the direction also changes the pattern by rotating it. 
 Use the \"Rotate\" button to change the pattern without setting the direction."
 mouse_filter = 1
+theme_override_font_sizes/font_size = 18
 text = "Set Direction"
 vertical_alignment = 1
 
-[node name="DirectionButtons" type="HBoxContainer" parent="VFlowContainer/DrawingPanel/VboxContainer/Panel/DirectionContainer/VBoxContainer/VBoxContainer3"]
+[node name="DirectionButtons" type="HBoxContainer" parent="VFlowContainer/DrawingPanel/VboxContainer/Panel/DirectionContainer/VBoxContainer/VBoxContainer3" unique_id=584914803]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 
-[node name="VBoxLeft" type="VBoxContainer" parent="VFlowContainer/DrawingPanel/VboxContainer/Panel/DirectionContainer/VBoxContainer/VBoxContainer3/DirectionButtons"]
+[node name="VBoxLeft" type="VBoxContainer" parent="VFlowContainer/DrawingPanel/VboxContainer/Panel/DirectionContainer/VBoxContainer/VBoxContainer3/DirectionButtons" unique_id=1647985903]
 layout_mode = 2
 alignment = 1
 
-[node name="Left" type="Button" parent="VFlowContainer/DrawingPanel/VboxContainer/Panel/DirectionContainer/VBoxContainer/VBoxContainer3/DirectionButtons/VBoxLeft"]
+[node name="Left" type="Button" parent="VFlowContainer/DrawingPanel/VboxContainer/Panel/DirectionContainer/VBoxContainer/VBoxContainer3/DirectionButtons/VBoxLeft" unique_id=1050425573]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -158,78 +141,86 @@ icon = ExtResource("4_wthrg")
 icon_alignment = 1
 expand_icon = true
 
-[node name="VBoxMiddle" type="VBoxContainer" parent="VFlowContainer/DrawingPanel/VboxContainer/Panel/DirectionContainer/VBoxContainer/VBoxContainer3/DirectionButtons"]
+[node name="VBoxMiddle" type="VBoxContainer" parent="VFlowContainer/DrawingPanel/VboxContainer/Panel/DirectionContainer/VBoxContainer/VBoxContainer3/DirectionButtons" unique_id=2086444314]
 layout_mode = 2
 
-[node name="Up" type="Button" parent="VFlowContainer/DrawingPanel/VboxContainer/Panel/DirectionContainer/VBoxContainer/VBoxContainer3/DirectionButtons/VBoxMiddle"]
+[node name="Up" type="Button" parent="VFlowContainer/DrawingPanel/VboxContainer/Panel/DirectionContainer/VBoxContainer/VBoxContainer3/DirectionButtons/VBoxMiddle" unique_id=669181019]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 icon = ExtResource("5_bmr7p")
 icon_alignment = 1
 expand_icon = true
 
-[node name="Down" type="Button" parent="VFlowContainer/DrawingPanel/VboxContainer/Panel/DirectionContainer/VBoxContainer/VBoxContainer3/DirectionButtons/VBoxMiddle"]
+[node name="Down" type="Button" parent="VFlowContainer/DrawingPanel/VboxContainer/Panel/DirectionContainer/VBoxContainer/VBoxContainer3/DirectionButtons/VBoxMiddle" unique_id=271253474]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 icon = ExtResource("3_ej2yv")
 icon_alignment = 1
 expand_icon = true
 
-[node name="VBoxRight" type="VBoxContainer" parent="VFlowContainer/DrawingPanel/VboxContainer/Panel/DirectionContainer/VBoxContainer/VBoxContainer3/DirectionButtons"]
+[node name="VBoxRight" type="VBoxContainer" parent="VFlowContainer/DrawingPanel/VboxContainer/Panel/DirectionContainer/VBoxContainer/VBoxContainer3/DirectionButtons" unique_id=16205674]
 layout_mode = 2
 alignment = 1
 
-[node name="Right" type="Button" parent="VFlowContainer/DrawingPanel/VboxContainer/Panel/DirectionContainer/VBoxContainer/VBoxContainer3/DirectionButtons/VBoxRight"]
+[node name="Right" type="Button" parent="VFlowContainer/DrawingPanel/VboxContainer/Panel/DirectionContainer/VBoxContainer/VBoxContainer3/DirectionButtons/VBoxRight" unique_id=1732509812]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 icon = ExtResource("2_iwhx2")
 expand_icon = true
 
-[node name="Label2" type="Label" parent="VFlowContainer/DrawingPanel/VboxContainer/Panel/DirectionContainer/VBoxContainer/VBoxContainer3"]
+[node name="Control" type="Control" parent="VFlowContainer/DrawingPanel/VboxContainer/Panel/DirectionContainer/VBoxContainer/VBoxContainer3" unique_id=605962765]
+custom_minimum_size = Vector2(4, 4)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VFlowContainer/DrawingPanel/VboxContainer/Panel/DirectionContainer/VBoxContainer/VBoxContainer3" unique_id=1836848491]
+layout_mode = 2
+theme_override_constants/separation = -4
+
+[node name="Label2" type="Label" parent="VFlowContainer/DrawingPanel/VboxContainer/Panel/DirectionContainer/VBoxContainer/VBoxContainer3/VBoxContainer" unique_id=293585370]
 layout_mode = 2
 text = "Curren Direction:"
 
-[node name="DirectionLabel" type="Label" parent="VFlowContainer/DrawingPanel/VboxContainer/Panel/DirectionContainer/VBoxContainer/VBoxContainer3"]
+[node name="DirectionLabel" type="Label" parent="VFlowContainer/DrawingPanel/VboxContainer/Panel/DirectionContainer/VBoxContainer/VBoxContainer3/VBoxContainer" unique_id=1135073238]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Right"
 
-[node name="ResetZoom" type="Button" parent="VFlowContainer/DrawingPanel/VboxContainer/Panel/DirectionContainer/VBoxContainer"]
+[node name="ResetZoom" type="Button" parent="VFlowContainer/DrawingPanel/VboxContainer/Panel/DirectionContainer/VBoxContainer" unique_id=298309045]
 layout_mode = 2
 text = "Reset Zoom"
 
-[node name="CenterContainer" type="CenterContainer" parent="VFlowContainer/DrawingPanel/VboxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="VFlowContainer/DrawingPanel/VboxContainer" unique_id=1028299510]
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ZoomControl" type="Control" parent="VFlowContainer/DrawingPanel/VboxContainer/CenterContainer"]
+[node name="ZoomControl" type="Control" parent="VFlowContainer/DrawingPanel/VboxContainer/CenterContainer" unique_id=769701005]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 
-[node name="TileMapLayer" type="TileMapLayer" parent="VFlowContainer/DrawingPanel/VboxContainer/CenterContainer/ZoomControl"]
+[node name="TileMapLayer" type="TileMapLayer" parent="VFlowContainer/DrawingPanel/VboxContainer/CenterContainer/ZoomControl" unique_id=1410645222]
 unique_name_in_owner = true
 tile_map_data = PackedByteArray("AAAAAAEAAAABAAAAAAABAAAAAAABAAAAAAABAAEAAAAAAAAAAAD+/wAAAAAAAAAAAAD+/wEAAAABAAAAAAD//wAAAAABAAAAAAD//wEAAAAAAAAAAAD9//3/AAAAAAAAAAD9//7/AAABAAAAAAD9////AAAAAAAAAAD9/wAAAAABAAAAAAD9/wEAAAAAAAAAAAD9/wIAAAABAAAAAAD+//3/AAABAAAAAAD///3/AAAAAAAAAAD+//7/AAAAAAAAAAD+////AAABAAAAAAD///7/AAABAAAAAAD/////AAAAAAAAAAD+/wIAAAAAAAAAAAD//wIAAAABAAAAAAAAAP3/AAABAAAAAAABAP3/AAAAAAAAAAAAAP7/AAAAAAAAAAABAP7/AAABAAAAAAABAP//AAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAAABAAAAAAACAP3/AAABAAAAAAADAP3/AAAAAAAAAAACAP7/AAAAAAAAAAACAP//AAABAAAAAAADAP7/AAABAAAAAAADAP//AAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAABAAAAAAADAAAAAAABAAAAAAADAAEAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAABAAAAAAD9/wMAAAAAAAAAAAD+/wMAAAABAAAAAAD//wMAAAAAAAAAAAAAAAMAAAABAAAAAAABAAMAAAAAAAAAAAACAAMAAAABAAAAAAADAAMAAAAAAAAAAAAAAP//AAABAAAAAAA=")
-tile_set = SubResource("TileSet_faps1")
+tile_set = ExtResource("6_6rdq5")
 navigation_enabled = false
 
-[node name="HighlightMapLayer" type="TileMapLayer" parent="VFlowContainer/DrawingPanel/VboxContainer/CenterContainer/ZoomControl"]
+[node name="HighlightMapLayer" type="TileMapLayer" parent="VFlowContainer/DrawingPanel/VboxContainer/CenterContainer/ZoomControl" unique_id=195080881]
 unique_name_in_owner = true
-tile_set = SubResource("TileSet_faps1")
+tile_set = ExtResource("6_6rdq5")
 navigation_enabled = false
 
-[node name="HoverLayer" type="TileMapLayer" parent="VFlowContainer/DrawingPanel/VboxContainer/CenterContainer/ZoomControl"]
+[node name="HoverLayer" type="TileMapLayer" parent="VFlowContainer/DrawingPanel/VboxContainer/CenterContainer/ZoomControl" unique_id=1173389835]
 unique_name_in_owner = true
-tile_set = SubResource("TileSet_faps1")
+tile_set = ExtResource("6_6rdq5")
 navigation_enabled = false
 
-[node name="SaveDialog" type="FileDialog" parent="."]
+[node name="SaveDialog" type="FileDialog" parent="." unique_id=1334988639]
 initial_position = 1
 size = Vector2i(483, 415)
 
-[node name="LoadDialog" type="FileDialog" parent="."]
+[node name="LoadDialog" type="FileDialog" parent="." unique_id=1386356447]
 auto_translate_mode = 1
 title = "Open a File"
 initial_position = 1
